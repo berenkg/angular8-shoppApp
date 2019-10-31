@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                    <ul class="list-group">
+                    
+                            <li 
+                                class="list-group-item ">
+                                Tüm Katoriler
+                            </li>
+                            <li 
+                                *ngFor="let c of categories" 
+                                class="list-group-item list-group-item-action"
+                                [class.active]="c==SelectedCategory"
+                                (click)="changeCategory(c)"
+                                href="#">
+                                {{c.name}}
+                            </li>
+                          </ul>
+            </div>
+            <div class="col-md-9 row">
+                <ng-container *ngFor="let p of products">
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <img style="height:450px;"src="/assets/img/{{p.imageUrl}}">
+                            <div class="card-body">
+                                <h4 class="cart-title">
+                                    <a href="">{{p.name}}</a>
+                                </h4>
+                                <hr>
+                                <div class="col-md-12 row">
+                                        <div class="col-md-6" >
+                                                <button (click)="yonlendir()" class="btn btn-primary"> detay</button>
+                                        </div>
+                                        <div class="col-md-6" >
+                                            <button class="btn btn-primary"> to card</button>    
+                                        </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <div class="col-md-12">
+                    <div class="btn-group">
+                        <button 
+                            *ngFor="let p of pageNumbers"
+                            (click)="changePageNumber(p)" class="btn btn-outline">{{p}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
